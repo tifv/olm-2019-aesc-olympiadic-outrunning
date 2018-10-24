@@ -1,0 +1,32 @@
+import sys
+import os
+import stat
+import traceback
+
+try:
+    file_list = []
+    
+    toplevel_names = os.listdir('.')
+    for dirname in toplevel_names:
+        if dirname.startswith("."):
+            continue
+        if not stat.S_ISDIR(os.stat(dirname).st_mode):
+            continue
+        filenames = os.listdir(dirname)
+        for filename in filenames:
+            if not filename.endswith(".tex"):
+                continue
+            file_list.append(dirname + '/' + filename)
+
+    contents = "".join(
+        r"\clearpage\input{" + file_path + r"}" "\n"
+        for file_path in file_list )
+    with open("contents.tex", "w") as f:
+        f.write(contents)
+    
+except:
+    with open("contents.tex", "w") as f:
+        f.write(r"\begingroup\small" "\n" r"\begin{verbatim}" "\n")
+        traceback.print_exc(None, f)
+        f.write(r"\end{verbatim}" "\n" r"\endgroup" "\n")
+

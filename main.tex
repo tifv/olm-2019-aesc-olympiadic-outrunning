@@ -1,0 +1,81 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+% Конфигурация — общее {{{1
+
+\usepackage{multicol}
+\usepackage[svgnames]{xcolor}
+\usepackage{graphicx}
+
+\usepackage[lazy-figures]{jeolm}
+\usepackage{jeolm-groups}
+
+\usepackage[T2A]{fontenc}
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{upgreek}
+\AtBeginDocument{\swapvar{phi}\swapvar{epsilon}}
+\AtBeginDocument{\swapvar[up]{phi}\swapvar[up]{epsilon}}
+\AtBeginDocument{\let\geq\geqslant\let\leq\leqslant}
+\usepackage[russian]{babel}
+\usepackage{parskip}
+\pagestyle{empty}
+
+% Конфигурация — страницы {{{1
+
+\usepackage{geometry}
+% Размер «логической» страницы
+\geometry{a5paper,portrait,vmargin={2em,2em},hmargin={2em,2em}}
+%\geometry{a6paper,landscape,vmargin={1.5em,1.5em},hmargin={1.5em,1.5em}}
+
+%\usepackage{pgfpages}
+% Размещение «логических» страниц на «физической»
+%\pgfpagesuselayout{resize to}[a4paper]
+%\pgfpagesuselayout{2 on 1}[a4paper,landscape]
+%\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage{hyperref}
+\hypersetup{colorlinks,urlcolor=blue}
+\def\maybephantomsection{\ifdefined\phantomsection\phantomsection\fi}
+
+% Конфигурация — локальное {{{1
+
+\renewcommand\jeolminstitution
+  {СУНЦ МГУ, Олимпиадная математика}%
+\renewcommand\jeolmdaterange
+  {2018--2019}%
+\def\jeolmgroupname{Убегающие}%
+
+% Конфигурация — размер шрифта {{{1
+
+% Уменьшить основной размер шрифта
+%\AtBeginDocument{\fontsize{9.00}{10.80}\selectfont}
+% (по умолчанию 10.00 и 12.00 соответственно)
+
+% }}}1
+
+
+\begin{document}
+
+\clearpage\input{2018-10/24-inequality-mean.tex}
+\clearpage\input{2018-10/24-inequality-mean.tex}
+
+\end{document}
+
+% Архив {{{1
+
+\clearpage\input{2018-10/17-mixture.tex}
+\clearpage\input{2018-10/19-geom-orthocenter.tex}
+\clearpage\input{2018-10/24-inequality-mean.tex}
+
+% }}}1
+
+\tableofcontents
+\let\worksheetsave\worksheet
+\def\worksheet#1{\maybephantomsection\addcontentsline{toc}{section}{#1}%
+    \worksheetsave{#1}}
+\clearpage\input{contents.tex} % auto-generated
+
+
+% vim: set foldmethod=marker :%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

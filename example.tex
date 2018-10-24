@@ -1,0 +1,97 @@
+\resetproblem \begingroup % \jeolmheader
+    \def\jeolmdate{D MMбря YYYY г.}% понедельник
+    \def\jeolmauthors{Пономарев~А.\,А.}%
+\jeolmheader \endgroup
+
+\worksheet{Название листика}
+
+
+\subsection*{Упражнения или разбираемые задачи}
+
+\begin{exercises}
+
+\item
+Имеют
+\\
+\subproblem отдельную нумерацию
+\quad
+и
+\quad
+\subproblem отличаются по форматированию.
+
+\end{exercises}
+
+
+\subsection*{Базовое использование}
+
+(\verb+\subsection+, конечно, вещь совершенно необязательная.)
+
+\begin{problems}
+
+\itemy{0}
+Нумерацию отдельных задач можно задавать вручную.
+
+\item
+Задача.
+
+\item
+\subproblem Пункт;
+\\
+\subproblemx{*} сложный пункт;
+\\
+\subproblemy{ы} кривой пункт.
+
+\itemx{*}
+Сложная задача.
+
+\end{problems}
+
+
+\subsection*{Второй раздел}
+
+\claim{Теорема}
+Важная, наверное.
+
+\begin{problems}
+
+\item
+Нумерация задач продолжается непрерывно.
+Команда \verb+\resetproblem+ сбрасывает нумерацию.
+Аналогично работает команда \verb+\resetsubproblem+.
+
+\item\claim{Другая теорема}
+Но при этом задача.
+
+\end{problems}
+
+Какой-то текст.
+
+\begin{problems}
+
+\item\emph{Ещё теорема.}
+Но её название никому всё равно не нужно, так что жирным выделять не стоит.
+
+\item
+Текстик\\
+\subproblem вариант задачи
+\qquad
+\subproblem другой вариант
+\\
+опять текстик.
+
+\end{problems}
+
+
+\subsection*{Всякие мелочи}
+
+\begin{problems}
+
+\item
+В соответствии с Unicode, поменяты местами $\phi$ и $\varphi$, а также
+$\epsilon$ и $\varepsilon$.
+
+\item
+Определен сравнительно адекватный оператор $a \kratno b$.
+
+\end{problems}
+
