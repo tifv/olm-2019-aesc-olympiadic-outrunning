@@ -31,4 +31,3 @@ $(foreach theTEX,$(TEX),$(eval $(PIECE)))
 
 .PHONY: first allpdf
 
-
