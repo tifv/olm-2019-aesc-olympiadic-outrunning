@@ -3,27 +3,45 @@ import os
 import stat
 import traceback
 
-try:
+LEVEL = 2
+
+def list_files(dirpath, level):
     file_list = []
-    
-    toplevel_names = os.listdir('.')
-    for dirname in toplevel_names:
-        if dirname.startswith("."):
+    names = os.listdir(dirpath)
+    for name in names:
+        if name.startswith('.'):
             continue
-        if not stat.S_ISDIR(os.stat(dirname).st_mode):
-            continue
-        filenames = os.listdir(dirname)
-        for filename in filenames:
-            if not filename.endswith(".tex"):
+        if dirpath == '.':
+            path = name
+        else:
+            path = dirpath + '/' + name
+        if stat.S_ISDIR(os.stat(path).st_mode):
+            if level <= 1:
                 continue
-            file_list.append(dirname + '/' + filename)
+            file_list.extend(list_files(path, level=level-1))
+        else:
+            if level > 1:
+                continue
+            if not name.endswith(".tex"):
+                continue
+            file_list.append(path)
+    return file_list
+
+
+if sys.argv[1:] == ["--list"]:
+    file_list = list_files(".", level=LEVEL)
+    sys.stdout.write("".join(path + '\n' for path in file_list))
+    raise SystemExit
+
+try:
+    file_list = list_files(".", level=LEVEL)
 
     contents = "".join(
         r"\clearpage\input{" + file_path + r"}" "\n"
         for file_path in file_list )
     with open("contents.tex", "w") as f:
         f.write(contents)
-    
+
 except:
     with open("contents.tex", "w") as f:
         f.write(r"\begingroup\small" "\n" r"\begin{verbatim}" "\n")
