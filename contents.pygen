@@ -15,7 +15,7 @@ def list_files(dirpath, level):
             path = name
         else:
             path = dirpath + '/' + name
-        if stat.S_ISDIR(os.stat(path).st_mode):
+        if stat.S_ISDIR(os.lstat(path).st_mode):
             if level <= 1:
                 continue
             file_list.extend(list_files(path, level=level-1))
